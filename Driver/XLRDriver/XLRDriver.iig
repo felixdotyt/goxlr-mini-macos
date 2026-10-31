@@ -1,0 +1,44 @@
+// XLR driver, Phase 4: owns the GoXLR's control path (ADR 0004 option (B)).
+// Matches the USB device, sets its configuration with the interfaces left to
+// Apple's audio driver, and runs the DCP transport on the default control pipe
+// from its device session (SPEC.md). Clients reach it through
+// XLRDriverUserClient (ADR 0003 option (d)).
+
+#ifndef XLRDriver_h
+#define XLRDriver_h
+
+#include <DriverKit/IOService.iig>
+#include <DriverKit/IOTimerDispatchSource.iig>
+#include <DriverKit/OSData.iig>
+
+class XLRDriver: public IOService
+{
+public:
+    virtual bool init() override;
+    virtual void free() override;
+    virtual kern_return_t Start(IOService * provider) override;
+    virtual kern_return_t Stop(IOService * provider) override;
+    virtual kern_return_t NewUserClient(uint32_t type, IOUserClient ** userClient) override;
+
+    virtual void PollTimerFired(OSAction * action, uint64_t time) TYPE(IOTimerDispatchSource::TimerOccurred);
+
+    // For XLRDriverUserClient, which runs in the same process. Each runs on the
+    // driver's transport queue, so it is ordered with commands and events.
+    kern_return_t AttachClient(IOUserClient * client) LOCALONLY;
+    void DetachClient(IOUserClient * client) LOCALONLY;
+    void SetSubscriber(IOUserClient * client, OSAction * completion) LOCALONLY;
+    // An XLRDriverInfo.
+    kern_return_t CopyInfo(OSData ** info) LOCALONLY;
+    // request: XLRCommandHeader + payload. reply: XLRCommandReplyHeader + payload.
+    // trustedClient: the client is signed by the driver's team (ClientIsTrusted),
+    // so hardware-risk values pass the policy (the user's decision, SPEC.md section 8).
+    kern_return_t ExecuteCommand(OSData * request, OSData ** reply, bool trustedClient) LOCALONLY;
+    // Whether a client's entitlements carry the team identifier this driver was
+    // built for (personality key XLRTrustedTeam). Fails closed.
+    bool ClientIsTrusted(OSDictionary * entitlements) LOCALONLY;
+    // Resets the USB device, which terminates this driver and re-attaches the
+    // device as if replugged (no power cut). Returns once the reset is queued.
+    kern_return_t Reenumerate() LOCALONLY;
+};
+
+#endif /* XLRDriver_h */

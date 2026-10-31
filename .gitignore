@@ -1,0 +1,40 @@
+# Build output
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+.build/
+.swiftpm/
+
+# Local signing config and material (never commit)
+Config/Local.xcconfig
+*.mobileprovision
+*.provisionprofile
+*.p12
+*.cer
+*.certSigningRequest
+
+# RE material lives in ~/dev/goxlr-re, never here
+*.pcap
+*.pcapng
+*.exe
+*.sys
+*.dll
+*.cat
+*.inf
+
+.DS_Store
+
+# Local build logs
+*.log
+
+# Spike variant builds
+build-b/
+
+# Python bytecode
+__pycache__/
+
+# Photos from hardware sessions stay in ~/dev/goxlr-re
+*.jpg
+*.jpeg
+*.heic

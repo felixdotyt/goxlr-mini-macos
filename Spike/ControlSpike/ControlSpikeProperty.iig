@@ -1,0 +1,16 @@
+// Phase 4 step 0 control-channel spike: a read-only custom property that logs
+// every time the framework asks it for its value (ADR 0003 finding 1).
+
+#ifndef ControlSpikeProperty_h
+#define ControlSpikeProperty_h
+
+#include <AudioDriverKit/IOUserAudioCustomProperty.iig>
+
+class ControlSpikeProperty: public IOUserAudioCustomProperty
+{
+public:
+    virtual kern_return_t GetCustomPropertyValueWithQualifier(OSObject * in_qualifier_data,
+                                                              OSObject ** out_data) override;
+};
+
+#endif /* ControlSpikeProperty_h */

@@ -1,0 +1,387 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00C000000000000000000001 /* ControlSpike.iig in Sources */ = {isa = PBXBuildFile; fileRef = 00B000000000000000000001 /* ControlSpike.iig */; };
+		00C000000000000000000002 /* ControlSpike.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00B000000000000000000002 /* ControlSpike.cpp */; };
+		00C000000000000000000005 /* ControlSpikeCommand.iig in Sources */ = {isa = PBXBuildFile; fileRef = 00B00000000000000000000B /* ControlSpikeCommand.iig */; };
+		00C000000000000000000006 /* ControlSpikeProperty.iig in Sources */ = {isa = PBXBuildFile; fileRef = 00B00000000000000000000C /* ControlSpikeProperty.iig */; };
+		00C000000000000000000007 /* ControlSpikeUserClient.iig in Sources */ = {isa = PBXBuildFile; fileRef = 00B00000000000000000000D /* ControlSpikeUserClient.iig */; };
+		00C000000000000000000008 /* MatchSpike.iig in Sources */ = {isa = PBXBuildFile; fileRef = 00B00000000000000000000E /* MatchSpike.iig */; };
+		00C000000000000000000009 /* MatchSpike.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00B00000000000000000000F /* MatchSpike.cpp */; };
+		00C000000000000000000003 /* SpikeHostApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B000000000000000000006 /* SpikeHostApp.swift */; };
+		00C000000000000000000004 /* yt.felix.xlr.spike.driver.dext in Embed System Extensions */ = {isa = PBXBuildFile; fileRef = 00B000000000000000000009 /* yt.felix.xlr.spike.driver.dext */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00F000000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00A000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00E000000000000000000001;
+			remoteInfo = ControlSpike;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		00D000000000000000000005 /* Embed System Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(SYSTEM_EXTENSIONS_FOLDER_PATH)";
+			dstSubfolderSpec = 16;
+			files = (
+				00C000000000000000000004 /* yt.felix.xlr.spike.driver.dext in Embed System Extensions */,
+			);
+			name = "Embed System Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		00B000000000000000000001 /* ControlSpike.iig */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.iig; path = ControlSpike.iig; sourceTree = "<group>"; };
+		00B000000000000000000002 /* ControlSpike.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ControlSpike.cpp; sourceTree = "<group>"; };
+		00B00000000000000000000B /* ControlSpikeCommand.iig */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.iig; path = ControlSpikeCommand.iig; sourceTree = "<group>"; };
+		00B00000000000000000000C /* ControlSpikeProperty.iig */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.iig; path = ControlSpikeProperty.iig; sourceTree = "<group>"; };
+		00B00000000000000000000D /* ControlSpikeUserClient.iig */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.iig; path = ControlSpikeUserClient.iig; sourceTree = "<group>"; };
+		00B00000000000000000000E /* MatchSpike.iig */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.iig; path = MatchSpike.iig; sourceTree = "<group>"; };
+		00B00000000000000000000F /* MatchSpike.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MatchSpike.cpp; sourceTree = "<group>"; };
+		00B000000000000000000003 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00B000000000000000000005 /* ControlSpike.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ControlSpike.entitlements; sourceTree = "<group>"; };
+		00B000000000000000000006 /* SpikeHostApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpikeHostApp.swift; sourceTree = "<group>"; };
+		00B000000000000000000007 /* SpikeHost.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpikeHost.entitlements; sourceTree = "<group>"; };
+		00B000000000000000000008 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
+		00B000000000000000000009 /* yt.felix.xlr.spike.driver.dext */ = {isa = PBXFileReference; explicitFileType = "wrapper.driver-extension"; includeInIndex = 0; path = yt.felix.xlr.spike.driver.dext; sourceTree = BUILT_PRODUCTS_DIR; };
+		00B00000000000000000000A /* SpikeHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpikeHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00D000000000000000000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00D000000000000000000004 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00A000000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				00A000000000000000000004 /* ControlSpike */,
+				00A000000000000000000005 /* SpikeHost */,
+				00A000000000000000000006 /* Config */,
+				00A000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		00A000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				00B000000000000000000009 /* yt.felix.xlr.spike.driver.dext */,
+				00B00000000000000000000A /* SpikeHost.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		00A000000000000000000004 /* ControlSpike */ = {
+			isa = PBXGroup;
+			children = (
+				00B000000000000000000001 /* ControlSpike.iig */,
+				00B000000000000000000002 /* ControlSpike.cpp */,
+				00B00000000000000000000B /* ControlSpikeCommand.iig */,
+				00B00000000000000000000C /* ControlSpikeProperty.iig */,
+				00B00000000000000000000D /* ControlSpikeUserClient.iig */,
+				00B00000000000000000000E /* MatchSpike.iig */,
+				00B00000000000000000000F /* MatchSpike.cpp */,
+				00B000000000000000000003 /* Info.plist */,
+				00B000000000000000000005 /* ControlSpike.entitlements */,
+			);
+			path = ControlSpike;
+			sourceTree = "<group>";
+		};
+		00A000000000000000000005 /* SpikeHost */ = {
+			isa = PBXGroup;
+			children = (
+				00B000000000000000000006 /* SpikeHostApp.swift */,
+				00B000000000000000000007 /* SpikeHost.entitlements */,
+			);
+			path = SpikeHost;
+			sourceTree = "<group>";
+		};
+		00A000000000000000000006 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				00B000000000000000000008 /* Base.xcconfig */,
+			);
+			name = Config;
+			path = ../Config;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00E000000000000000000001 /* ControlSpike */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 010000000000000000000004 /* Build configuration list for PBXNativeTarget "ControlSpike" */;
+			buildPhases = (
+				00D000000000000000000001 /* Sources */,
+				00D000000000000000000002 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ControlSpike;
+			productName = ControlSpike;
+			productReference = 00B000000000000000000009 /* yt.felix.xlr.spike.driver.dext */;
+			productType = "com.apple.product-type.driver-extension";
+		};
+		00E000000000000000000002 /* SpikeHost */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 010000000000000000000007 /* Build configuration list for PBXNativeTarget "SpikeHost" */;
+			buildPhases = (
+				00D000000000000000000003 /* Sources */,
+				00D000000000000000000004 /* Frameworks */,
+				00D000000000000000000005 /* Embed System Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00F000000000000000000002 /* PBXTargetDependency */,
+			);
+			name = SpikeHost;
+			productName = SpikeHost;
+			productReference = 00B00000000000000000000A /* SpikeHost.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		00A000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 2700;
+				TargetAttributes = {
+					00E000000000000000000001 = {
+						CreatedOnToolsVersion = 27.0;
+					};
+					00E000000000000000000002 = {
+						CreatedOnToolsVersion = 27.0;
+					};
+				};
+			};
+			buildConfigurationList = 010000000000000000000001 /* Build configuration list for PBXProject "Spike" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 00A000000000000000000002;
+			productRefGroup = 00A000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				00E000000000000000000001 /* ControlSpike */,
+				00E000000000000000000002 /* SpikeHost */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00D000000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00C000000000000000000001 /* ControlSpike.iig in Sources */,
+				00C000000000000000000002 /* ControlSpike.cpp in Sources */,
+				00C000000000000000000005 /* ControlSpikeCommand.iig in Sources */,
+				00C000000000000000000006 /* ControlSpikeProperty.iig in Sources */,
+				00C000000000000000000007 /* ControlSpikeUserClient.iig in Sources */,
+				00C000000000000000000008 /* MatchSpike.iig in Sources */,
+				00C000000000000000000009 /* MatchSpike.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00D000000000000000000003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00C000000000000000000003 /* SpikeHostApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00F000000000000000000002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 00E000000000000000000001 /* ControlSpike */;
+			targetProxy = 00F000000000000000000001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		010000000000000000000002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00B000000000000000000008 /* Base.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CURRENT_PROJECT_VERSION = 14;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MARKETING_VERSION = 0.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		010000000000000000000003 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00B000000000000000000008 /* Base.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CURRENT_PROJECT_VERSION = 14;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				MARKETING_VERSION = 0.1;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		010000000000000000000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ControlSpike/ControlSpike.entitlements;
+				OTHER_LDFLAGS = (
+					"-framework",
+					AudioDriverKit,
+					"-framework",
+					USBDriverKit,
+				);
+				INFOPLIST_FILE = ControlSpike/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(XLR_BUNDLE_PREFIX).spike.driver";
+				PRODUCT_NAME = "$(PRODUCT_BUNDLE_IDENTIFIER)";
+				SDKROOT = driverkit;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		010000000000000000000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ControlSpike/ControlSpike.entitlements;
+				OTHER_LDFLAGS = (
+					"-framework",
+					AudioDriverKit,
+					"-framework",
+					USBDriverKit,
+				);
+				INFOPLIST_FILE = ControlSpike/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(XLR_BUNDLE_PREFIX).spike.driver";
+				PRODUCT_NAME = "$(PRODUCT_BUNDLE_IDENTIFIER)";
+				SDKROOT = driverkit;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		010000000000000000000008 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SpikeHost/SpikeHost.entitlements;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "XLR Spike Host";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(XLR_BUNDLE_PREFIX).spike.host";
+				PRODUCT_NAME = SpikeHost;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		010000000000000000000009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SpikeHost/SpikeHost.entitlements;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "XLR Spike Host";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(XLR_BUNDLE_PREFIX).spike.host";
+				PRODUCT_NAME = SpikeHost;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		010000000000000000000001 /* Build configuration list for PBXProject "Spike" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				010000000000000000000002 /* Debug */,
+				010000000000000000000003 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		010000000000000000000004 /* Build configuration list for PBXNativeTarget "ControlSpike" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				010000000000000000000005 /* Debug */,
+				010000000000000000000006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		010000000000000000000007 /* Build configuration list for PBXNativeTarget "SpikeHost" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				010000000000000000000008 /* Debug */,
+				010000000000000000000009 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 00A000000000000000000001 /* Project object */;
+}

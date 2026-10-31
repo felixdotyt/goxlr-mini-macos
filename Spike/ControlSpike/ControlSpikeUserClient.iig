@@ -1,0 +1,31 @@
+// Phase 4 step 0 control-channel spike, option (a) of ADR 0003: a user client
+// of the driver's own, opened with type 'xlrc', which the helper app reaches
+// through IOKit instead of Core Audio custom properties.
+//
+// Selectors:
+//   0 echo       structure in -> the same bytes out
+//   1 info       scalar out: version, timebase numer, timebase denom
+//   2 subscribe  async: keeps the completion for events
+//   3 events     scalar in: count, interval µs; sends {seq, t} per event to the subscriber
+
+#ifndef ControlSpikeUserClient_h
+#define ControlSpikeUserClient_h
+
+#include <DriverKit/IOUserClient.iig>
+#include <DriverKit/IOTimerDispatchSource.iig>
+
+class ControlSpikeUserClient: public IOUserClient
+{
+public:
+    virtual bool init() override;
+    virtual void free() override;
+    virtual kern_return_t Start(IOService * provider) override;
+    virtual kern_return_t Stop(IOService * provider) override;
+    virtual kern_return_t ExternalMethod(uint64_t selector, IOUserClientMethodArguments * arguments,
+                                         const IOUserClientMethodDispatch * dispatch, OSObject * target,
+                                         void * reference) override;
+
+    virtual void EventTimerFired(OSAction * action, uint64_t time) TYPE(IOTimerDispatchSource::TimerOccurred);
+};
+
+#endif /* ControlSpikeUserClient_h */

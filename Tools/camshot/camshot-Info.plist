@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleExecutable</key>
+	<string>camshot</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>CFBundleIdentifier</key>
+	<string>yt.felix.xlr.camshot</string>
+	<key>CFBundleName</key>
+	<string>camshot</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Takes still photos of the GoXLR's buttons during hardware tests.</string>
+</dict>
+</plist>

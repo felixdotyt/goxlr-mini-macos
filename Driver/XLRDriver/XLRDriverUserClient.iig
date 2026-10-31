@@ -1,0 +1,21 @@
+// The XLR driver's user client (ADR 0003 option (d)), opened with type 'xlrd'.
+// The interface is XLRDriverABI.h.
+
+#ifndef XLRDriverUserClient_h
+#define XLRDriverUserClient_h
+
+#include <DriverKit/IOUserClient.iig>
+
+class XLRDriverUserClient: public IOUserClient
+{
+public:
+    virtual bool init() override;
+    virtual void free() override;
+    virtual kern_return_t Start(IOService * provider) override;
+    virtual kern_return_t Stop(IOService * provider) override;
+    virtual kern_return_t ExternalMethod(uint64_t selector, IOUserClientMethodArguments * arguments,
+                                         const IOUserClientMethodDispatch * dispatch, OSObject * target,
+                                         void * reference) override;
+};
+
+#endif /* XLRDriverUserClient_h */

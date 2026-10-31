@@ -1,0 +1,416 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00C000000000000000000001 /* XLRDriver.iig in Sources */ = {isa = PBXBuildFile; fileRef = 00B000000000000000000001 /* XLRDriver.iig */; };
+		00C000000000000000000002 /* XLRDriver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00B000000000000000000002 /* XLRDriver.cpp */; };
+		00C000000000000000000005 /* XLRDriverUserClient.iig in Sources */ = {isa = PBXBuildFile; fileRef = 00B00000000000000000000B /* XLRDriverUserClient.iig */; };
+		00C000000000000000000006 /* XLRDriverUserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00B00000000000000000000C /* XLRDriverUserClient.cpp */; };
+		00C000000000000000000007 /* Policy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00B00000000000000000000D /* Policy.cpp */; };
+		00C000000000000000000003 /* XLRHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B000000000000000000006 /* XLRHelperApp.swift */; };
+		00C000000000000000000009 /* DeviceSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B000000000000000000011 /* DeviceSession.swift */; };
+		00C00000000000000000000A /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B000000000000000000012 /* Views.swift */; };
+		00C000000000000000000008 /* GoXLRKit in Frameworks */ = {isa = PBXBuildFile; productRef = 012000000000000000000001 /* GoXLRKit */; };
+		00C000000000000000000004 /* XLRDriver.dext in Embed System Extensions */ = {isa = PBXBuildFile; fileRef = 00B000000000000000000009 /* XLRDriver.dext */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00F000000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00A000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00E000000000000000000001;
+			remoteInfo = XLRDriver;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		00D000000000000000000005 /* Embed System Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(SYSTEM_EXTENSIONS_FOLDER_PATH)";
+			dstSubfolderSpec = 16;
+			files = (
+				00C000000000000000000004 /* XLRDriver.dext in Embed System Extensions */,
+			);
+			name = "Embed System Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		00B000000000000000000001 /* XLRDriver.iig */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.iig; path = XLRDriver.iig; sourceTree = "<group>"; };
+		00B000000000000000000002 /* XLRDriver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = XLRDriver.cpp; sourceTree = "<group>"; };
+		00B00000000000000000000B /* XLRDriverUserClient.iig */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.iig; path = XLRDriverUserClient.iig; sourceTree = "<group>"; };
+		00B00000000000000000000C /* XLRDriverUserClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = XLRDriverUserClient.cpp; sourceTree = "<group>"; };
+		00B00000000000000000000D /* Policy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Policy.cpp; sourceTree = "<group>"; };
+		00B00000000000000000000E /* Policy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Policy.h; sourceTree = "<group>"; };
+		00B00000000000000000000F /* PolicyTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PolicyTypes.h; sourceTree = "<group>"; };
+		00B000000000000000000010 /* PolicyTable.generated.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PolicyTable.generated.h; sourceTree = "<group>"; };
+		00B000000000000000000003 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00B000000000000000000005 /* XLRDriver.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XLRDriver.entitlements; sourceTree = "<group>"; };
+		00B000000000000000000006 /* XLRHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLRHelperApp.swift; sourceTree = "<group>"; };
+		00B000000000000000000011 /* DeviceSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSession.swift; sourceTree = "<group>"; };
+		00B000000000000000000012 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
+		00B000000000000000000007 /* XLRHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XLRHelper.entitlements; sourceTree = "<group>"; };
+		00B000000000000000000008 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
+		00B000000000000000000009 /* XLRDriver.dext */ = {isa = PBXFileReference; explicitFileType = "wrapper.driver-extension"; includeInIndex = 0; path = "$(XLR_BUNDLE_PREFIX).driver.dext"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00B00000000000000000000A /* GoXLR Mini Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GoXLR Mini Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00D000000000000000000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00D000000000000000000004 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00C000000000000000000008 /* GoXLRKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00A000000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				00A000000000000000000004 /* XLRDriver */,
+				00A000000000000000000005 /* XLRHelper */,
+				00A000000000000000000006 /* Config */,
+				00A000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		00A000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				00B000000000000000000009 /* XLRDriver.dext */,
+				00B00000000000000000000A /* GoXLR Mini Mac.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		00A000000000000000000004 /* XLRDriver */ = {
+			isa = PBXGroup;
+			children = (
+				00B000000000000000000001 /* XLRDriver.iig */,
+				00B000000000000000000002 /* XLRDriver.cpp */,
+				00B00000000000000000000B /* XLRDriverUserClient.iig */,
+				00B00000000000000000000C /* XLRDriverUserClient.cpp */,
+				00B00000000000000000000D /* Policy.cpp */,
+				00B00000000000000000000E /* Policy.h */,
+				00B00000000000000000000F /* PolicyTypes.h */,
+				00B000000000000000000010 /* PolicyTable.generated.h */,
+				00B000000000000000000003 /* Info.plist */,
+				00B000000000000000000005 /* XLRDriver.entitlements */,
+			);
+			path = Driver/XLRDriver;
+			sourceTree = "<group>";
+		};
+		00A000000000000000000005 /* XLRHelper */ = {
+			isa = PBXGroup;
+			children = (
+				00B000000000000000000006 /* XLRHelperApp.swift */,
+				00B000000000000000000011 /* DeviceSession.swift */,
+				00B000000000000000000012 /* Views.swift */,
+				00B000000000000000000007 /* XLRHelper.entitlements */,
+			);
+			path = Helper/XLRHelper;
+			sourceTree = "<group>";
+		};
+		00A000000000000000000006 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				00B000000000000000000008 /* Base.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00E000000000000000000001 /* XLRDriver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 010000000000000000000004 /* Build configuration list for PBXNativeTarget "XLRDriver" */;
+			buildPhases = (
+				00D000000000000000000001 /* Sources */,
+				00D000000000000000000002 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XLRDriver;
+			productName = XLRDriver;
+			productReference = 00B000000000000000000009 /* XLRDriver.dext */;
+			productType = "com.apple.product-type.driver-extension";
+		};
+		00E000000000000000000002 /* XLRHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 010000000000000000000007 /* Build configuration list for PBXNativeTarget "XLRHelper" */;
+			buildPhases = (
+				00D000000000000000000003 /* Sources */,
+				00D000000000000000000004 /* Frameworks */,
+				00D000000000000000000005 /* Embed System Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00F000000000000000000002 /* PBXTargetDependency */,
+			);
+			name = XLRHelper;
+			packageProductDependencies = (
+				012000000000000000000001 /* GoXLRKit */,
+			);
+			productName = XLRHelper;
+			productReference = 00B00000000000000000000A /* GoXLR Mini Mac.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		00A000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 2700;
+				TargetAttributes = {
+					00E000000000000000000001 = {
+						CreatedOnToolsVersion = 27.0;
+					};
+					00E000000000000000000002 = {
+						CreatedOnToolsVersion = 27.0;
+					};
+				};
+			};
+			buildConfigurationList = 010000000000000000000001 /* Build configuration list for PBXProject "XLR" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 00A000000000000000000002;
+			packageReferences = (
+				011000000000000000000001 /* XCLocalSwiftPackageReference "Packages/GoXLRKit" */,
+			);
+			productRefGroup = 00A000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				00E000000000000000000001 /* XLRDriver */,
+				00E000000000000000000002 /* XLRHelper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00D000000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00C000000000000000000001 /* XLRDriver.iig in Sources */,
+				00C000000000000000000002 /* XLRDriver.cpp in Sources */,
+				00C000000000000000000005 /* XLRDriverUserClient.iig in Sources */,
+				00C000000000000000000006 /* XLRDriverUserClient.cpp in Sources */,
+				00C000000000000000000007 /* Policy.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00D000000000000000000003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00C000000000000000000003 /* XLRHelperApp.swift in Sources */,
+				00C000000000000000000009 /* DeviceSession.swift in Sources */,
+				00C00000000000000000000A /* Views.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00F000000000000000000002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 00E000000000000000000001 /* XLRDriver */;
+			targetProxy = 00F000000000000000000001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		010000000000000000000002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00B000000000000000000008 /* Base.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CURRENT_PROJECT_VERSION = 10;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MARKETING_VERSION = 0.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		010000000000000000000003 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00B000000000000000000008 /* Base.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CURRENT_PROJECT_VERSION = 10;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				MARKETING_VERSION = 0.1;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		010000000000000000000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Driver/XLRDriver/XLRDriver.entitlements;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Packages/GoXLRKit/Sources/XLRDriverABI/include";
+				OTHER_LDFLAGS = (
+					"-framework",
+					USBDriverKit,
+				);
+				INFOPLIST_FILE = Driver/XLRDriver/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(XLR_BUNDLE_PREFIX).driver";
+				PRODUCT_NAME = "$(PRODUCT_BUNDLE_IDENTIFIER)";
+				SDKROOT = driverkit;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		010000000000000000000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Driver/XLRDriver/XLRDriver.entitlements;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Packages/GoXLRKit/Sources/XLRDriverABI/include";
+				OTHER_LDFLAGS = (
+					"-framework",
+					USBDriverKit,
+				);
+				INFOPLIST_FILE = Driver/XLRDriver/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(XLR_BUNDLE_PREFIX).driver";
+				PRODUCT_NAME = "$(PRODUCT_BUNDLE_IDENTIFIER)";
+				SDKROOT = driverkit;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		010000000000000000000008 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Helper/XLRHelper/XLRHelper.entitlements;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "GoXLR Mini Mac";
+				INFOPLIST_KEY_LSUIElement = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(XLR_BUNDLE_PREFIX).helper";
+				PRODUCT_MODULE_NAME = XLRHelper;
+				PRODUCT_NAME = "GoXLR Mini Mac";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		010000000000000000000009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Helper/XLRHelper/XLRHelper.entitlements;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "GoXLR Mini Mac";
+				INFOPLIST_KEY_LSUIElement = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(XLR_BUNDLE_PREFIX).helper";
+				PRODUCT_MODULE_NAME = XLRHelper;
+				PRODUCT_NAME = "GoXLR Mini Mac";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		010000000000000000000001 /* Build configuration list for PBXProject "XLR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				010000000000000000000002 /* Debug */,
+				010000000000000000000003 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		010000000000000000000004 /* Build configuration list for PBXNativeTarget "XLRDriver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				010000000000000000000005 /* Debug */,
+				010000000000000000000006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		010000000000000000000007 /* Build configuration list for PBXNativeTarget "XLRHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				010000000000000000000008 /* Debug */,
+				010000000000000000000009 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		011000000000000000000001 /* XCLocalSwiftPackageReference "Packages/GoXLRKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/GoXLRKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		012000000000000000000001 /* GoXLRKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GoXLRKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 00A000000000000000000001 /* Project object */;
+}

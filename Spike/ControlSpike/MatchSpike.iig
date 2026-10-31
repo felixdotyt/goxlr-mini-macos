@@ -1,0 +1,23 @@
+// Phase 4 step 1 matching spike (ADR 0004 option (B)). Matches the GoXLR Mini
+// device (1220:8FE4), sets its configuration with the interfaces registered
+// for Apple's audio driver, and sends only the DCP global-data read: once at
+// start, then every 2 s. No other request reaches the device.
+
+#ifndef MatchSpike_h
+#define MatchSpike_h
+
+#include <DriverKit/IOService.iig>
+#include <DriverKit/IOTimerDispatchSource.iig>
+
+class MatchSpike: public IOService
+{
+public:
+    virtual bool init() override;
+    virtual void free() override;
+    virtual kern_return_t Start(IOService * provider) override;
+    virtual kern_return_t Stop(IOService * provider) override;
+
+    virtual void PollTimerFired(OSAction * action, uint64_t time) TYPE(IOTimerDispatchSource::TimerOccurred);
+};
+
+#endif /* MatchSpike_h */

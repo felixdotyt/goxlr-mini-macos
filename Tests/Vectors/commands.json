@@ -1,0 +1,338 @@
+{
+  "schema": 1,
+  "spec": "docs/protocol/SPEC.md sections 3, 8-10; docs/protocol/commands.md",
+  "notes": "Hand-written byte vectors. 'synthetic' marks example values not read from a device. Channel, key and value meanings marked 'inferred' come from goxlr-utility and are verified on hardware in Phase 5. Checked by Tests/Vectors/check_vectors.py.",
+  "vectors": [
+    {
+      "id": "request-get-versions",
+      "kind": "dcp-request",
+      "ledger": [
+        "L-023",
+        "L-092"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "bytes": "00f08000000001000000000000000000",
+      "decoded": {
+        "category": 2063,
+        "index": 0,
+        "sequence": 1,
+        "payload": ""
+      }
+    },
+    {
+      "id": "request-get-serial",
+      "kind": "dcp-request",
+      "ledger": [
+        "L-023",
+        "L-092"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "bytes": "01f08000000002000000000000000000",
+      "decoded": {
+        "category": 2063,
+        "index": 1,
+        "sequence": 2,
+        "payload": ""
+      }
+    },
+    {
+      "id": "request-get-input-state",
+      "kind": "dcp-request",
+      "ledger": [
+        "L-023",
+        "L-092"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "bytes": "00008000000003000000000000000000",
+      "decoded": {
+        "category": 2048,
+        "index": 0,
+        "sequence": 3,
+        "payload": ""
+      }
+    },
+    {
+      "id": "request-set-volume-music-192",
+      "kind": "dcp-request",
+      "ledger": [
+        "L-023",
+        "L-092"
+      ],
+      "class": "inferred",
+      "firmware": "any",
+      "notes": "Index = (bank << 4) | channel; Music = 7 (GU numbering).",
+      "bytes": "07608000010004000000000000000000c0",
+      "decoded": {
+        "category": 2054,
+        "index": 7,
+        "sequence": 4,
+        "payload": "c0"
+      }
+    },
+    {
+      "id": "request-set-submix-volume-chat-128",
+      "kind": "dcp-request",
+      "ledger": [
+        "L-023",
+        "L-092"
+      ],
+      "class": "inferred",
+      "firmware": "submix gate: Full >= 1.4.2.107, Mini >= 1.2.0.46",
+      "notes": "Bank 1, channel Chat = 5: index 0x15.",
+      "bytes": "1560800001000500000000000000000080",
+      "decoded": {
+        "category": 2054,
+        "index": 21,
+        "sequence": 5,
+        "payload": "80"
+      }
+    },
+    {
+      "id": "request-mute-chat",
+      "kind": "dcp-request",
+      "ledger": [
+        "L-023",
+        "L-092"
+      ],
+      "class": "inferred",
+      "firmware": "any",
+      "bytes": "0590800001000600000000000000000001",
+      "decoded": {
+        "category": 2057,
+        "index": 5,
+        "sequence": 6,
+        "payload": "01"
+      }
+    },
+    {
+      "id": "request-fader-a-music",
+      "kind": "dcp-request",
+      "ledger": [
+        "L-023",
+        "L-092"
+      ],
+      "class": "inferred",
+      "firmware": "any",
+      "bytes": "0050800004000700000000000000000007000000",
+      "decoded": {
+        "category": 2053,
+        "index": 0,
+        "sequence": 7,
+        "payload": "07000000"
+      }
+    },
+    {
+      "id": "request-encoder-reverb-minus-10",
+      "kind": "dcp-request",
+      "ledger": [
+        "L-023",
+        "L-092"
+      ],
+      "class": "inferred",
+      "firmware": "any",
+      "bytes": "02a08000010008000000000000000000f6",
+      "decoded": {
+        "category": 2058,
+        "index": 2,
+        "sequence": 8,
+        "payload": "f6"
+      }
+    },
+    {
+      "id": "request-monitor-mix-b",
+      "kind": "dcp-request",
+      "ledger": [
+        "L-023",
+        "L-092"
+      ],
+      "class": "inferred",
+      "firmware": "submix gate: Full >= 1.4.2.107, Mini >= 1.2.0.46",
+      "bytes": "0080810001000900000000000000000001",
+      "decoded": {
+        "category": 2072,
+        "index": 0,
+        "sequence": 9,
+        "payload": "01"
+      }
+    },
+    {
+      "id": "request-effect-gate-threshold-minus-30",
+      "kind": "dcp-request",
+      "ledger": [
+        "L-023",
+        "L-092"
+      ],
+      "class": "inferred",
+      "firmware": "any",
+      "notes": "{u32 key 0x11 GateThreshold, i32 -30}; key numbering from GU.",
+      "bytes": "0010800008000a00000000000000000011000000e2ffffff",
+      "decoded": {
+        "category": 2049,
+        "index": 0,
+        "sequence": 10,
+        "payload": "11000000e2ffffff"
+      }
+    },
+    {
+      "id": "request-mic-type-dynamic",
+      "kind": "dcp-request",
+      "ledger": [
+        "L-023",
+        "L-092"
+      ],
+      "class": "inferred",
+      "firmware": "any",
+      "notes": "{u32 key 0x000 MicType, u32 0 dynamic}: phantom power off. Value 1 would enable 48 V (hardware-risk, gated).",
+      "bytes": "00b0800008000b0000000000000000000000000000000000",
+      "decoded": {
+        "category": 2059,
+        "index": 0,
+        "sequence": 11,
+        "payload": "0000000000000000"
+      }
+    },
+    {
+      "id": "request-fader-d-display",
+      "kind": "dcp-request",
+      "ledger": [
+        "L-023",
+        "L-092"
+      ],
+      "class": "inferred",
+      "firmware": "any",
+      "bytes": "0340810002000c0000000000000000000101",
+      "decoded": {
+        "category": 2068,
+        "index": 3,
+        "sequence": 12,
+        "payload": "0101"
+      }
+    },
+    {
+      "id": "request-routing-music-l-clear-mix2",
+      "kind": "dcp-request",
+      "ledger": [
+        "L-023",
+        "L-061",
+        "L-092"
+      ],
+      "class": "inferred",
+      "firmware": "Mix2 gate: Full >= 1.5.0.0, Mini >= 1.3.0.0",
+      "notes": "Row 14 = Music L; all zero = routed nowhere.",
+      "bytes": "0e4080001a000d0000000000000000000000000000000000000000000000000000000000000000000000",
+      "decoded": {
+        "category": 2052,
+        "index": 14,
+        "sequence": 13,
+        "payload": "0000000000000000000000000000000000000000000000000000"
+      }
+    },
+    {
+      "id": "request-get-mic-level",
+      "kind": "dcp-request",
+      "ledger": [
+        "L-023",
+        "L-092"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "bytes": "00c0800000000e000000000000000000",
+      "decoded": {
+        "category": 2060,
+        "index": 0,
+        "sequence": 14,
+        "payload": ""
+      }
+    },
+    {
+      "id": "versions-decode",
+      "kind": "versions",
+      "ledger": [
+        "L-092"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "synthetic": "example versions, not this Mini's",
+      "bytes": "001200002e00000000000000010000001000000000303000",
+      "decoded": {
+        "firmware": [
+          1,
+          2,
+          0,
+          46
+        ],
+        "fpga_count": 1,
+        "dice_build": 16,
+        "dice_version": [
+          3,
+          3,
+          0
+        ]
+      }
+    },
+    {
+      "id": "input-state-decode",
+      "kind": "input-state",
+      "ledger": [
+        "L-092"
+      ],
+      "class": "inferred",
+      "firmware": "any",
+      "synthetic": "example state",
+      "notes": "Bits 4 (fader 1 mute) and 22 (bleep); bit names from GU.",
+      "bytes": "1000400000fb0a00ff800040",
+      "decoded": {
+        "buttons": 4194320,
+        "pressed": [
+          4,
+          22
+        ],
+        "encoders": [
+          0,
+          -5,
+          10,
+          0
+        ],
+        "faders": [
+          255,
+          128,
+          0,
+          64
+        ]
+      }
+    },
+    {
+      "id": "input-state-top-bits-masked",
+      "kind": "input-state",
+      "ledger": [
+        "L-092"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "synthetic": "example state",
+      "notes": "The app masks the bitfield with 0x3FFFFFFF (commands.md open question 4).",
+      "bytes": "010000c000000000000000ff",
+      "decoded": {
+        "buttons": 1,
+        "pressed": [
+          0
+        ],
+        "encoders": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "faders": [
+          0,
+          0,
+          0,
+          255
+        ]
+      }
+    }
+  ]
+}

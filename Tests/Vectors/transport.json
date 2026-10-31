@@ -1,0 +1,418 @@
+{
+  "schema": 1,
+  "spec": "docs/protocol/SPEC.md sections 1-6",
+  "notes": "Hand-written byte vectors. 'synthetic' marks example values not read from a device; their encoding follows the cited ledger entries. Checked by Tests/Vectors/check_vectors.py.",
+  "vectors": [
+    {
+      "id": "setup-read-global-data",
+      "kind": "usb-setup",
+      "ledger": [
+        "L-021",
+        "L-050"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "bytes": "c100000000001800",
+      "decoded": {
+        "bmRequestType": 193,
+        "bRequest": 0,
+        "wValue": 0,
+        "wIndex": 0,
+        "wLength": 24
+      }
+    },
+    {
+      "id": "setup-reset",
+      "kind": "usb-setup",
+      "ledger": [
+        "L-021",
+        "L-024",
+        "L-050"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "bytes": "4101000000000000",
+      "decoded": {
+        "bmRequestType": 65,
+        "bRequest": 1,
+        "wValue": 0,
+        "wIndex": 0,
+        "wLength": 0
+      }
+    },
+    {
+      "id": "setup-send-command-1-byte-payload",
+      "kind": "usb-setup",
+      "ledger": [
+        "L-021",
+        "L-023",
+        "L-050"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "bytes": "4102000000001100",
+      "decoded": {
+        "bmRequestType": 65,
+        "bRequest": 2,
+        "wValue": 0,
+        "wIndex": 0,
+        "wLength": 17
+      }
+    },
+    {
+      "id": "setup-read-reply-max-1024",
+      "kind": "usb-setup",
+      "ledger": [
+        "L-021",
+        "L-025",
+        "L-050"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "synthetic": "max payload 1024 is an example; the real value comes from global data word 4 (L-090)",
+      "bytes": "c103000000001004",
+      "decoded": {
+        "bmRequestType": 193,
+        "bRequest": 3,
+        "wValue": 0,
+        "wIndex": 0,
+        "wLength": 1040
+      }
+    },
+    {
+      "id": "setup-uac2-set-cur-48k-clock-41",
+      "kind": "usb-setup",
+      "ledger": [
+        "L-055",
+        "L-104",
+        "L-112"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "bytes": "2101000100290400",
+      "data": "80bb0000",
+      "decoded": {
+        "bmRequestType": 33,
+        "bRequest": 1,
+        "wValue": 256,
+        "wIndex": 10496,
+        "wLength": 4,
+        "data_u32": 48000
+      }
+    },
+    {
+      "id": "global-data-ok",
+      "kind": "global-data",
+      "ledger": [
+        "L-022"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "synthetic": "dcp_version 2 and max payload 1024 are examples",
+      "bytes": "731906046619101802000000000000000004000000000000",
+      "decoded": {
+        "ok": true,
+        "dcp_version": 2,
+        "max_payload": 1024,
+        "reset_with_brequest_1": true
+      }
+    },
+    {
+      "id": "global-data-version-1-uses-command-0-0",
+      "kind": "global-data",
+      "ledger": [
+        "L-022",
+        "L-024"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "synthetic": "example values",
+      "bytes": "731906046619101801000000000000000002000000000000",
+      "decoded": {
+        "ok": true,
+        "dcp_version": 1,
+        "max_payload": 512,
+        "reset_with_brequest_1": false
+      }
+    },
+    {
+      "id": "global-data-bad-magic",
+      "kind": "global-data",
+      "ledger": [
+        "L-022"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "bytes": "731906040000000002000000000000000004000000000000",
+      "decoded": {
+        "ok": false,
+        "error": "badMagic"
+      }
+    },
+    {
+      "id": "request-reset-0-0",
+      "kind": "dcp-request",
+      "ledger": [
+        "L-023",
+        "L-024"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "bytes": "00000000000000000000000000000000",
+      "decoded": {
+        "category": 0,
+        "index": 0,
+        "sequence": 0,
+        "payload": ""
+      }
+    },
+    {
+      "id": "reply-ok-versions",
+      "kind": "dcp-reply",
+      "ledger": [
+        "L-025"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "synthetic": "payload values are examples (see commands.json versions-decode)",
+      "expect": {
+        "category": 2063,
+        "index": 0,
+        "sequence": 1,
+        "max_payload": 24
+      },
+      "bytes": "00f08000180001000000000000000000001200002e00000000000000010000001000000000303000",
+      "decoded": {
+        "ok": true,
+        "status": 0,
+        "payload": "001200002e00000000000000010000001000000000303000"
+      }
+    },
+    {
+      "id": "reply-ok-empty",
+      "kind": "dcp-reply",
+      "ledger": [
+        "L-025"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "expect": {
+        "category": 2054,
+        "index": 7,
+        "sequence": 4,
+        "max_payload": 0
+      },
+      "bytes": "07608000000004000000000000000000",
+      "decoded": {
+        "ok": true,
+        "status": 0,
+        "payload": ""
+      }
+    },
+    {
+      "id": "reply-dcp-status-invalid-argument",
+      "kind": "dcp-reply",
+      "ledger": [
+        "L-025",
+        "L-031"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "notes": "Status numbering is medium confidence (L-031).",
+      "expect": {
+        "category": 2054,
+        "index": 7,
+        "sequence": 4,
+        "max_payload": 0
+      },
+      "bytes": "07608000000004000800000000000000",
+      "decoded": {
+        "ok": false,
+        "error": "dcpStatus",
+        "status": 8,
+        "status_name": "invalid argument"
+      }
+    },
+    {
+      "id": "reply-too-short",
+      "kind": "dcp-reply",
+      "ledger": [
+        "L-025"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "expect": {
+        "category": 2048,
+        "index": 0,
+        "sequence": 3,
+        "max_payload": 12
+      },
+      "bytes": "0000800000000300",
+      "decoded": {
+        "ok": false,
+        "error": "replyTooShort"
+      }
+    },
+    {
+      "id": "reply-opcode-mismatch",
+      "kind": "dcp-reply",
+      "ledger": [
+        "L-025",
+        "L-031"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "expect": {
+        "category": 2048,
+        "index": 0,
+        "sequence": 3,
+        "max_payload": 12
+      },
+      "bytes": "00f08000000003000000000000000000",
+      "decoded": {
+        "ok": false,
+        "error": "opcodeMismatch"
+      }
+    },
+    {
+      "id": "reply-sequence-mismatch",
+      "kind": "dcp-reply",
+      "ledger": [
+        "L-025",
+        "L-031"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "expect": {
+        "category": 2048,
+        "index": 0,
+        "sequence": 3,
+        "max_payload": 12
+      },
+      "bytes": "00008000000002000000000000000000",
+      "decoded": {
+        "ok": false,
+        "error": "sequenceMismatch"
+      }
+    },
+    {
+      "id": "reply-length-mismatch",
+      "kind": "dcp-reply",
+      "ledger": [
+        "L-025",
+        "L-031"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "expect": {
+        "category": 2048,
+        "index": 0,
+        "sequence": 3,
+        "max_payload": 12
+      },
+      "bytes": "000080000c0003000000000000000000",
+      "decoded": {
+        "ok": false,
+        "error": "lengthMismatch"
+      }
+    },
+    {
+      "id": "reply-too-large",
+      "kind": "dcp-reply",
+      "ledger": [
+        "L-025",
+        "L-031"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "expect": {
+        "category": 2048,
+        "index": 0,
+        "sequence": 3,
+        "max_payload": 12
+      },
+      "bytes": "000080000d000300000000000000000000000000000000000000000000",
+      "decoded": {
+        "ok": false,
+        "error": "replyTooLarge"
+      }
+    },
+    {
+      "id": "interrupt-response-ready",
+      "kind": "interrupt",
+      "ledger": [
+        "L-027",
+        "L-028",
+        "L-053",
+        "L-101"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "bytes": "010101000000",
+      "decoded": {
+        "vendor": true,
+        "response_ready": true,
+        "event_flags": 0,
+        "read_input_state": false
+      }
+    },
+    {
+      "id": "interrupt-input-changed-bleep-flag",
+      "kind": "interrupt",
+      "ledger": [
+        "L-027",
+        "L-028",
+        "L-064"
+      ],
+      "class": "inferred",
+      "firmware": "any",
+      "notes": "Flag 0x200000 as bleep is inferred (commands.md).",
+      "bytes": "010100002000",
+      "decoded": {
+        "vendor": true,
+        "response_ready": false,
+        "event_flags": 2097152,
+        "read_input_state": true
+      }
+    },
+    {
+      "id": "interrupt-inputs-changed-no-flags",
+      "kind": "interrupt",
+      "ledger": [
+        "L-053",
+        "L-064"
+      ],
+      "class": "derived",
+      "firmware": "any",
+      "notes": "The app would ignore this (no bits 21-31); SPEC.md reads input state anyway (L-064).",
+      "bytes": "010100000000",
+      "decoded": {
+        "vendor": true,
+        "response_ready": false,
+        "event_flags": 0,
+        "read_input_state": true
+      }
+    },
+    {
+      "id": "interrupt-class-clock-change",
+      "kind": "interrupt",
+      "ledger": [
+        "L-043",
+        "L-104"
+      ],
+      "class": "inferred",
+      "firmware": "any",
+      "notes": "UAC2 class interrupt (bInfo 0x00, interface): CUR of the sampling-frequency control on clock 41. Not a DCP message. Shape from the UAC2 spec section 6.1.",
+      "bytes": "000100010029",
+      "decoded": {
+        "vendor": false,
+        "response_ready": false,
+        "event_flags": 0,
+        "read_input_state": false,
+        "class_attribute": 1,
+        "class_wValue": 256,
+        "class_wIndex": 10496
+      }
+    }
+  ]
+}
