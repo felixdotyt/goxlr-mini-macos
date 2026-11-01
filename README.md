@@ -1,13 +1,32 @@
 # GoXLR Mini Mac
 
 Control a TC-Helicon **GoXLR Mini** from a Mac. TC-Helicon's GoXLR app runs only
-on Windows; on a Mac the Mini plays audio as a standard USB interface, but its
-mixer, buttons, mic settings and lights can't be changed. This project adds a
-macOS driver (DriverKit) that talks to the Mini's controls, and a menu bar app
-that uses it. Apple's own USB audio driver keeps handling the sound.
+on Windows. On a Mac the Mini plays audio as a standard USB interface, and
+[goxlr-utility](https://github.com/GoXLR-on-Linux/goxlr-utility) can already
+control it from user space (its macOS support is marked experimental). This
+project takes another route: a macOS driver (DriverKit) that talks to the
+Mini's controls, and a native menu bar app that uses it. Apple's own USB audio
+driver keeps handling the sound.
 
 Not affiliated with or endorsed by TC-Helicon or Music Tribe. GoXLR is their
 trademark.
+
+## Compared with goxlr-utility
+
+goxlr-utility is the mature option. It supports the full-size GoXLR as well as
+the Mini, including effects, the sampler and EQ, and it has a macOS installer.
+Use it if you want something to install today. This project:
+
+- supports only the Mini, and only what's listed below;
+- has no download yet: you build it yourself;
+- is a DriverKit driver and a SwiftUI menu bar app;
+- keeps its safety rules in the driver: it refuses firmware updates and any
+  command not on its list, and takes phantom power commands only from apps
+  signed by the developer's team;
+- was checked command by command on a Mini, with the evidence in
+  [the ledger](docs/protocol/LEDGER.md).
+
+Running both at once hasn't been tried; use one or the other.
 
 ## What works
 
