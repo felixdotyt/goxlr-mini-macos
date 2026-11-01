@@ -210,6 +210,40 @@ final class MixerModelTests: XCTestCase {
         XCTAssertTrue(fadersOnly.toggleMute(.b).contains(.mute(.music, true)))
     }
 
+    // L-142: after a power-up the faders read 0 and their channels stay at 0
+    // until each fader moves.
+    func testFaderReportsCountOnceTheFaderMoves() {
+        var mixer = model()
+        mixer.deviceAttached()
+        XCTAssertFalse(mixer.faderReport([0, 0, 0, 0]))  // assignments not sent since attach
+        _ = mixer.applyAssignments()
+        XCTAssertFalse(mixer.faderReport([0, 0, 0, 0]))  // first report: not moved yet
+        XCTAssertFalse(mixer.faderReport([0, 0, 0, 0]))
+        XCTAssertTrue(mixer.faderReport([0, 0, 0, 189]))
+        XCTAssertEqual(mixer.state.volumes, [.system: 189])
+        XCTAssertTrue(mixer.faderReport([0, 0, 0, 0]))   // moved to the bottom: a real 0
+        XCTAssertEqual(mixer.state.volumes[.system], 0)
+        // A new channel on the fader waits for the fader to move again.
+        _ = mixer.setFader(.d, .game)
+        XCTAssertFalse(mixer.faderReport([0, 0, 0, 0]))
+        XCTAssertFalse(mixer.faderReport([0, 0, 0, 0]))
+        XCTAssertTrue(mixer.faderReport([0, 0, 0, 40]))
+        XCTAssertEqual(mixer.state.volumes, [.system: 0, .game: 40])
+    }
+
+    func testFaderVolumesAreSentAtAttach() {
+        var mixer = model()
+        _ = mixer.setVolume(.system, 189)
+        _ = mixer.setVolume(.headphones, 200)              // not on a fader
+        mixer.deviceAttached()
+        XCTAssertEqual(mixer.applyFaderVolumes(), [.volume(.system, 189)])
+        XCTAssertTrue(mixer.applied.volumes.contains(.system))
+        // The unmoved faders' reports don't overwrite the saved volume.
+        _ = mixer.applyAssignments()
+        XCTAssertFalse(mixer.faderReport([0, 0, 0, 0]))
+        XCTAssertEqual(mixer.state.volumes[.system], 189)
+    }
+
     func testUnchangedSettingsKeepMutes() {
         var mixer = model()
         _ = mixer.toggleMute(.b)

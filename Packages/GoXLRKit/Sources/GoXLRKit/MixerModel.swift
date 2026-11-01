@@ -137,6 +137,10 @@ public struct MixerModel: Sendable {
     public private(set) var bleepDown = false
     /// Channels this host has muted with 0x809.
     public private(set) var mutedChannels: Set<Channel> = []
+    /// Each fader's first report since attach (or since its channel or the
+    /// volumes changed), and the faders that have moved from it.
+    private var firstFaderReport: [Fader: UInt8] = [:]
+    private var movedFaders: Set<Fader> = []
 
     public init(state: MixerState = MixerState(), features: FirmwareFeatures = .testedMini) {
         self.state = state
@@ -150,6 +154,10 @@ public struct MixerModel: Sendable {
     public mutating func setVolume(_ channel: Channel, _ value: UInt8) -> [DeviceCommand] {
         state.volumes[channel] = value
         applied.volumes.insert(channel)
+        for fader in Fader.allCases where state.faders[fader] == channel {
+            firstFaderReport[fader] = nil
+            movedFaders.remove(fader)
+        }
         return [.volume(channel, value)]
     }
 
@@ -160,8 +168,49 @@ public struct MixerModel: Sendable {
         var commands = muteState(fader).isMuted ? unmute(fader) : []
         state.faders[fader] = channel
         applied.faders.insert(fader)
+        firstFaderReport[fader] = nil
+        movedFaders.remove(fader)
         commands.append(.fader(fader, channel))
         return commands + [lights()]
+    }
+
+    /// Fader reports (0x800). After a power-up the Mini reads every fader as 0
+    /// and holds its channel at volume 0 until the fader moves (L-123, L-142);
+    /// once it has moved, its report is its channel's volume (inferred from one
+    /// point, L-142). So a report counts once it differs from the fader's first
+    /// one. Returns whether a saved volume changed.
+    public mutating func faderReport(_ positions: [UInt8]) -> Bool {
+        var changed = false
+        for fader in Fader.allCases where Int(fader.rawValue) < positions.count {
+            guard applied.faders.contains(fader), let channel = state.faders[fader] else { continue }
+            let position = positions[Int(fader.rawValue)]
+            if !movedFaders.contains(fader) {
+                guard let first = firstFaderReport[fader] else {
+                    firstFaderReport[fader] = position
+                    continue
+                }
+                guard position != first else { continue }
+                movedFaders.insert(fader)
+            }
+            applied.volumes.insert(channel)
+            if state.volumes[channel] != position {
+                state.volumes[channel] = position
+                changed = true
+            }
+        }
+        return changed
+    }
+
+    /// The saved volumes of the channels on faders, which the Mini holds at 0
+    /// after a power-up until each fader moves (L-142).
+    public mutating func applyFaderVolumes() -> [DeviceCommand] {
+        var commands = [DeviceCommand]()
+        for channel in Set(state.faders.values).sorted(by: { $0.rawValue < $1.rawValue }) {
+            guard let volume = state.volumes[channel] else { continue }
+            commands.append(.volume(channel, volume))
+            applied.volumes.insert(channel)
+        }
+        return commands
     }
 
     /// Routing rows have bytes for Stream Mix 2 on Mix2 firmware, which this
@@ -205,6 +254,8 @@ public struct MixerModel: Sendable {
     public mutating func apply(_ newState: MixerState) -> [DeviceCommand] {
         let release = releaseAllMutes()
         state = newState
+        firstFaderReport = [:]
+        movedFaders = []
         return release + applyAll()
     }
 
@@ -269,6 +320,8 @@ public struct MixerModel: Sendable {
         bleepDown = false
         mutedChannels = []
         applied = AppliedSettings()
+        firstFaderReport = [:]
+        movedFaders = []
     }
 
     // MARK: Buttons

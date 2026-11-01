@@ -15,12 +15,15 @@ public extension DeviceProfile {
     ]
 
     /// The official app's default fader channels; the mic to the Stream Mix and
-    /// headphones, as the Mini has it at power-up (L-133, L-137). Other inputs'
-    /// routing is left alone.
+    /// headphones, as the Mini has it at power-up (L-133, L-137). The
+    /// computer's channels go to the headphones, so the Mac is heard whatever
+    /// the Mini's power-up routing for them is (unknown, L-141); the Stream Mix
+    /// is left for the user to add. Line In and Console are left alone.
     private static var defaultMixer: MixerState {
         var mixer = MixerState()
         mixer.faders = [.a: .mic, .b: .chat, .c: .music, .d: .system]
         mixer.routing = [.mic: [.broadcast, .headphones]]
+        for input in [RoutingInput.system, .game, .chat, .music, .sample] { mixer.routing[input] = [.headphones] }
         return mixer
     }
 

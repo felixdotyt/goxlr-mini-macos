@@ -1,10 +1,11 @@
 # ADR 0005: Packaging for other Macs
 
 - **Status:** the user chose **B** on 2026-10-31: request Apple's DriverKit
-  distribution entitlements. The request is drafted in
-  [driverkit-entitlement-request.md](../distribution/driverkit-entitlement-request.md)
-  for the user to submit. C (publish the source) can run alongside it. Until
-  Apple approves, D6 (this Mac only) stands for builds signed by this team.
+  distribution entitlements. The request
+  ([driverkit-entitlement-request.md](../distribution/driverkit-entitlement-request.md))
+  was submitted on 2026-11-01 and awaits Apple's reply.
+  C runs alongside it: the source is public since 2026-10-31. Until Apple
+  approves, D6 (this Mac only) stands for builds signed by this team.
 - **Date:** 2026-10-31
 
 ## Context

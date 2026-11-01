@@ -33,14 +33,21 @@ Decisions:
    them each time it attaches.
 3. **EQ:** most Mini EQ keys did nothing (L-136). Worth a session with you
    talking into the mic to map the bands, or leave the EQ out?
-4. **Packaging for other Macs:** you chose a Developer ID request (ADR 0005).
-   Submit the drafted
+4. **Packaging for other Macs:** the source is public at
+   <https://github.com/felixdotyt/goxlr-mini-macos> since 2026-10-31 (MIT; a
+   fresh single commit by the GitHub no-reply address, without `PROMPT.md`,
+   `PLAN.md` or this history; its working copy is `~/dev/goxlr-mini-macos`).
+   For signed downloads you chose a Developer ID request (ADR 0005). The
    [DriverKit entitlement request](distribution/driverkit-entitlement-request.md)
-   when you're ready; publishing the source for others to build can run
-   alongside it.
+   was submitted on 2026-11-01: USB Transport for
+   vendor 4640 and UserClient Access for `yt.felix.xlr.driver`. Apple replies
+   by email to the account's address; forum reports suggest a week or two.
+   The app is called **GoXLR Mini Mac** since 2026-11-01 (your decision,
+   replacing PROMPT.md D8's "XLR Helper"); the bundle IDs are unchanged, so
+   the request, which names the app XLR Helper, still covers it.
 
 To try with you at the Mini (each needs you there):
-- volumes and routing from the app, with you listening at low volume;
+- volumes from the app, with you listening at low volume;
 - applying an imported profile;
 - the helper starting at login (after your next restart).
 

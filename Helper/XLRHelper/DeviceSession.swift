@@ -104,6 +104,9 @@ final class DeviceSession: ObservableObject {
         didSet { if let data = try? JSONEncoder().encode(animation) { UserDefaults.standard.set(data, forKey: Key.animation) } }
     }
     @Published private(set) var mixer: MixerModel
+    private var mixerSavePending = false
+    /// Counts attaches, so a delayed send can tell it's still the same one.
+    private var attachment = 0
     @Published private(set) var info: DriverInfo?
     @Published private(set) var connected = false
     let live = LiveLevels()
@@ -212,9 +215,13 @@ final class DeviceSession: ObservableObject {
             mixer.deviceAttached()
             tracker.reset()
             lastButtons = 0
+            attachment += 1
             attached(release: release)
         case .input(let state):
-            if live.faders != state.faders { live.faders = state.faders }
+            if live.faders != state.faders {
+                live.faders = state.faders
+                if mixer.faderReport(state.faders) { persistMixerSoon() }
+            }
             buttons(state.buttons)
         case .detached:
             connected = false
@@ -233,8 +240,11 @@ final class DeviceSession: ObservableObject {
         if restoreMixerOnAttach {
             commands += mixer.applyAll()
         } else if buttonHandling {
-            commands += mixer.applyAssignments()
+            // The faders' last volumes too: the Mini holds them at 0 until each
+            // fader moves (L-142), so the Mac would be silent until then.
+            commands += mixer.applyAssignments() + mixer.applyFaderVolumes()
         }
+        if restoreMixerOnAttach || buttonHandling { resendFaderVolumes() }
         if buttonHandling { commands.append(mixer.lights()) }
         var what = "driver ready; \(Self.describe(mic))"
         if restoreMixerOnAttach { what += "; mixer restored" }
@@ -243,6 +253,20 @@ final class DeviceSession: ObservableObject {
             return
         }
         send(commands, what)
+    }
+
+    /// After a power-up the Mini sets the fader channels' volumes from the
+    /// faders (0 until each moves) 2–3.5 s after it attaches, over what was sent
+    /// at attach; sent 5 s after attach, they stayed (L-143).
+    private func resendFaderVolumes() {
+        let attachment = attachment
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
+            MainActor.assumeIsolated {
+                guard let self, self.connected, self.attachment == attachment,
+                      self.restoreMixerOnAttach || self.buttonHandling else { return }
+                self.send(self.mixer.applyFaderVolumes(), "fader volumes again after attach")
+            }
+        }
     }
 
     // MARK: Buttons
@@ -310,6 +334,18 @@ final class DeviceSession: ObservableObject {
     private func change(_ commands: [DeviceCommand], _ what: String) {
         persistMixer()
         send(commands, what)
+    }
+
+    /// Fader moves report many times a second; save at most once a second.
+    private func persistMixerSoon() {
+        guard !mixerSavePending else { return }
+        mixerSavePending = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            MainActor.assumeIsolated {
+                self?.mixerSavePending = false
+                self?.persistMixer()
+            }
+        }
     }
 
     private func persistMixer() {
@@ -611,6 +647,7 @@ final class DeviceSession: ObservableObject {
     /// At quit: release this app's mutes and lights, waiting for the commands,
     /// so no channel stays muted with nothing left to unmute it.
     func releaseForQuit() {
+        if mixerSavePending { persistMixer() }
         guard buttonHandling else { return }
         let commands = prepared(mixer.releaseAllMutes() + [Self.lightsAsFound], lights: true)
         let done = DispatchSemaphore(value: 0)

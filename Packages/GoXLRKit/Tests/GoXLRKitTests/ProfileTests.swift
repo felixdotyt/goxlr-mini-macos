@@ -96,6 +96,11 @@ final class ProfileTests: XCTestCase {
         for profile in defaults where profile.lighting != nil {
             XCTAssertNotNil(profile.lighting?.colourMap(features: .testedMini), profile.name)
         }
+        // The computer's audio (macOS plays into System) reaches the headphones.
+        let layout = try XCTUnwrap(defaults.first { $0.name == "Default Layout" }?.mixer)
+        for input in [RoutingInput.system, .game, .chat, .music, .sample] {
+            XCTAssertEqual(layout.routing[input], [.headphones], input.title)
+        }
         XCTAssertEqual(try store.addMissing(defaults), defaults.map(\.name))
         XCTAssertEqual(Set(store.names()), Set(defaults.map(\.name)))
         for profile in defaults { XCTAssertEqual(try store.load(profile.name), profile) }

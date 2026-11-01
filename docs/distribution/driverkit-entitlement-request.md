@@ -1,8 +1,32 @@
-# DriverKit entitlement request (draft for the account holder)
+# DriverKit entitlement request
 
 For ADR 0005 option B: distributing the app with Developer ID. Apple must
-approve the driver's entitlements for distribution first. The account holder
-submits this; the agent doesn't.
+approve the driver's entitlements for distribution first.
+
+**Submitted 2026-11-01.** Apple's confirmation: it will review the request and
+reply with a status update.
+
+## What the form asked, and what was sent
+
+The form (signed in) has these fields; Name, Email and Organization come from
+the account:
+
+| Field | Sent |
+|---|---|
+| Company / Product URL | <https://github.com/felixdotyt/goxlr-mini-macos> |
+| Which entitlement | DriverKit Entitlement |
+| Which DriverKit entitlements | USB Transport, UserClient Access (others unticked, Audio included) |
+| USB Vendor ID (decimal) | 4640 |
+| UserClient Bundle IDs ("bundle IDs of driver extensions") | `yt.felix.xlr.driver` |
+| Description | the text below, in the first person, with both bundle IDs, the repository link, and "I'm an individual developer, not affiliated with TC-Helicon." Nothing about vendor permission. |
+
+The form has no separate box for the base `com.apple.developer.driverkit`
+entitlement; choosing DriverKit Entitlement is assumed to cover it.
+
+The app was renamed GoXLR Mini Mac after the request was sent (2026-11-01);
+its bundle IDs, which the request names, are unchanged.
+
+The rest of this file is the draft the form was filled from.
 
 ## Where
 

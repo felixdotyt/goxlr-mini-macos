@@ -142,7 +142,7 @@ struct MixerPage: View {
                 }
             }
         }
-        PageSection(title: "Volumes", note: "0–100 %. A channel shows \"Not set\" until it has been set here or by a profile; the GoXLR keeps its own level until then.") {
+        PageSection(title: "Volumes", note: "0–100 %. A channel shows \"Not set\" until it has been set here, by a profile or by moving its fader; the GoXLR keeps its own level until then. After a power-up the GoXLR holds every fader's channel at 0 until the fader moves, so the app sends each fader's last level when the GoXLR attaches.") {
             Grid(alignment: .leading, horizontalSpacing: 14, verticalSpacing: 6) {
                 ForEach(Channel.allCases, id: \.self) { channel in
                     VolumeRow(channel: channel, value: session.mixer.state.volumes[channel]) { session.setVolume(channel, $0) }

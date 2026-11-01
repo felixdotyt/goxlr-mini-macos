@@ -73,7 +73,10 @@ Steps:
    Extensions. If the app doesn't show the GoXLR as connected, unplug and
    replug it.
 6. On the **Mic** page, choose your mic type. On the **Profiles** page, apply
-   **Default Layout** for the usual fader channels, mic routing and colours.
+   **Default Layout** for the usual fader channels, routing (the computer's
+   channels to the headphones) and colours. macOS plays into the System
+   channel, on fader D in Default Layout. The faders set the volumes, so a
+   fader at the bottom is silent.
 
 If the driver shows as activated but nothing connects, the development profile
 built into the driver may not include this Mac (it was created before the Mac
