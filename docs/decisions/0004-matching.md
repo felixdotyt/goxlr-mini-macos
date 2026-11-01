@@ -171,7 +171,7 @@ Consequences for Phase 4:
 
 The real driver confirmed (B) on the Mini: the device session sent 21,450
 polled commands while `usbaudiod` streamed, audio stayed bit-exact, and the
-rollback drill worked through `goxlrctl driver deactivate` (STATUS.md "H2").
+rollback drill worked through `goxlrctl driver deactivate` (H2, 2026-10-31).
 Two additions:
 - **A USB driver update takes effect on replug.** v2 replaced a running v1
   with no approval: v1 stopped and closed the device when the Mini was

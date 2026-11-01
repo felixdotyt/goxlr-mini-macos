@@ -1,0 +1,45 @@
+name: Bug report
+description: Something the app or the driver gets wrong
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please don't paste the serial number from the Device page; it identifies your GoXLR.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what you expected
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+  - type: input
+    id: firmware
+    attributes:
+      label: GoXLR Mini firmware
+      description: On the app's Device page.
+      placeholder: 1.1.8.43
+    validations:
+      required: true
+  - type: input
+    id: mac
+    attributes:
+      label: macOS version and Mac
+      placeholder: macOS 27.0, MacBook Air (M2)
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Commit you built
+      description: "`git rev-parse --short HEAD` in your copy."
+  - type: textarea
+    id: log
+    attributes:
+      label: Log (optional)
+      description: |
+        `/usr/bin/log show --last 10m --predicate 'process == "GoXLR Mini Mac"'`
+        Remove anything you don't want public before posting.
+      render: text

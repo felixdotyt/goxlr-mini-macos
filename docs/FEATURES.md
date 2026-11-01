@@ -11,21 +11,21 @@ behaviour.
 - **both**: the host decides and the device executes.
 
 **Status:** `spec` means the static analysis plus cross-check is done and the
-feature awaits implementation. Every row is static only until the Phase 2/5
-hardware sessions.
+feature awaits implementation. "Verified" rows were checked on a Mini, with
+the ledger entry that records how.
 
 The persistence column says whether the device keeps the setting across a power
-cycle. It is **unknown** for every row. In the state found in Phase 2, the
+cycle; "unknown" means it hasn't been tested. In the state found in Phase 2, the
 Mini's mixer outputs were empty under Apple's driver (LEDGER L-109): no routing
 to the Stream Mix or Chat Mic Mix, and a silent processed mic. A power cycle
 with no host commands changed nothing: the lighting stayed blue and the mixer
 outputs stayed empty (L-113). goxlr-utility re-applies the whole profile on
 every connect. Both suggest the device keeps little or nothing (inferred).
-Phase 5 tests each row by setting it, power cycling, and reading it back.
+Rows marked yes or no were tested by setting the value and power cycling.
 
 | Feature | Commands | Side | Full | Mini | Firmware gate (inferred, from GU) | Persists? | Status |
 |---|---|---|---|---|---|---|---|
-| Channel volumes | 0x806 bank 0 | device | ✓ | ✓ | — | no (L-123) | verified on the Mini (L-123); held at 0 after a power-up until the channel's fader moves (L-142), and set from the faders 2–3.5 s after attach (L-143), so the helper saves the faders' levels and sends them at attach and 5 s later; after a replug with the faders untouched, the Mac is heard from 5 s (L-143); helper Mixer page (app path not yet tried on the Mini) |
+| Channel volumes | 0x806 bank 0 | device | ✓ | ✓ | — | no (L-123) | verified on the Mini (L-123); held at 0 after a power-up until the channel's fader moves (L-142), and set from the faders 2–3.5 s after attach (L-143), so the helper saves the faders' levels and sends them at attach and 5 s later; after a replug with the faders untouched, the Mac is heard from 5 s (L-143), also with only "Restore the mixer" on, the default (L-144); helper Mixer page (app path not yet tried on the Mini) |
 | Fader assignment | 0x805 | both (host picks, device applies) | ✓ | ✓ | — | unknown | verified on the Mini (L-123); helper Mixer page (app path not yet tried on the Mini) |
 | Fader position read-back | 0x800 (faders A–D) | device | ✓ | ✓ | — | n/a | verified (L-119); shown live on the helper's Mixer page |
 | Mute buttons, cough modes (hold/toggle, mute-to-X) | 0x809, 0x804, effect key MicInputMute; button events from 0x800 | host logic; device mutes | ✓ | ✓ | — | unknown | **implemented in the helper** (GoXLRKit `MixerModel`, unit-tested): mute to all (0x809) or to one output (routing rows), hold to mute to all, cough hold/toggle, bleep light; off until the user turns on button handling. Verified on the Mini: fader mutes to all, cough hold, bleep light (L-137); a fader-button hold, mute-to-X and the cough's toggle mode not yet tried. 0x809 verified (L-123); MicInputMute had no visible effect on the Mini (L-128) |

@@ -134,8 +134,8 @@ Phase 6 an exact A/B test.
 
 ## Open
 
-- What one `IOUSBIsochronousFrame` entry covers at high speed (STATUS open
-  question); packets here are per microframe.
+- What one `IOUSBIsochronousFrame` entry covers at high speed; packets here
+  are per microframe.
 - The full GoXLR's descriptors (8FE0).
 - The contents of interrupt messages on 0x81: Apple's driver polls the
   endpoint but logs nothing, so this waits for Phase 4.

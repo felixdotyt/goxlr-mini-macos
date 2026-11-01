@@ -135,6 +135,7 @@ final class DeviceSession: ObservableObject {
     /// 0x808 all zero: the state the Mini showed with no host (L-121).
     static let lightsAsFound = DeviceCommand.buttonLights([UInt8](repeating: 0, count: 24))
     /// Send the saved mixer (faders, volumes, routing, displays) at every attach.
+    /// On by default; with nothing saved it sends nothing.
     @Published var restoreMixerOnAttach: Bool {
         didSet { UserDefaults.standard.set(restoreMixerOnAttach, forKey: Key.restoreMixer) }
     }
@@ -169,7 +170,9 @@ final class DeviceSession: ObservableObject {
         }
         mixer = MixerModel(state: state)
         buttonHandling = defaults.bool(forKey: Key.buttonHandling)
-        restoreMixerOnAttach = defaults.bool(forKey: Key.restoreMixer)
+        // On until the user turns it off: with it off, the Mac goes silent after
+        // a power-up until the user applies a profile again (L-123, L-142).
+        restoreMixerOnAttach = defaults.object(forKey: Key.restoreMixer) as? Bool ?? true
         activeProfile = defaults.string(forKey: Key.profile)
         // First launch on this Mac: start with the default profiles.
         if store.isNew {

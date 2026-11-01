@@ -30,6 +30,8 @@ Running both at once hasn't been tried; use one or the other.
 
 ## What works
 
+![The app's Mixer page: the channel on each fader, and the channel volumes](docs/images/mixer.png)
+
 Tested on one GoXLR Mini (firmware 1.1.8.43), macOS 27, Apple silicon:
 
 - **Mixer:** channel volumes, which channel each fader controls, fader display
@@ -95,7 +97,10 @@ Steps:
    **Default Layout** for the usual fader channels, routing (the computer's
    channels to the headphones) and colours. macOS plays into the System
    channel, on fader D in Default Layout. The faders set the volumes, so a
-   fader at the bottom is silent.
+   fader at the bottom is silent. The Mini forgets its mixer at every
+   power-up; the app sends it again each time the Mini attaches ("Restore the
+   mixer" on the Profiles page, on unless you turn it off), and the Mac is
+   heard about 5 s after.
 
 If the driver shows as activated but nothing connects, the development profile
 built into the driver may not include this Mac (it was created before the Mac
